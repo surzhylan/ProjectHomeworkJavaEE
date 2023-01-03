@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-12">
-                <table class="table table-hover">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -27,7 +27,7 @@
                             <th>DETAILS</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-group-divider">
                         <%
                             ArrayList<Item> items = (ArrayList<Item>) request.getAttribute("items");
                             if(items!=null){
@@ -38,7 +38,7 @@
                                 <td><%=item.getName()%></td>
                                 <td><%=item.getPrice()%></td>
                                 <td><%=item.getAmount()%></td>
-                                <td><a href="#" class="btn btn-primary btn-sm">DETAILS</a></td>
+                                <td><a href="#" class="btn btn-dark btn-sm">DETAILS</a></td>
                             </tr>
                         <%
                                 }
