@@ -9,20 +9,25 @@ import kz.aleka.javaEE.db.DBManager;
 import kz.aleka.javaEE.model.Item;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-@WebServlet(value = "/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet(value = "/additem")
+public class AddItemServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<Item> items = DBManager.getList();
-        req.setAttribute("items",items);
-        req.getRequestDispatcher("/items.jsp").forward(req,resp);
+        req.getRequestDispatcher("/additem.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        double price = Double.parseDouble(req.getParameter("price"));
+        int amount = Integer.parseInt(req.getParameter("amount"));
 
+        Item item = new Item();
+        item.setName(name);
+        item.setPrice(price);
+        item.setAmount(amount);
+
+        DBManager.addItem(item);
+        resp.sendRedirect("/home");
     }
 }
