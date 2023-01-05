@@ -1,2 +1,1 @@
-# projectJavaEE
-# secondProjectJavaEE
+Homework project in Java EE
